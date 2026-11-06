@@ -1,0 +1,848 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0A0E1A] text-white font-sans overflow-x-hidden antialiased;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.05) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(139, 92, 246, 0.03) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* Custom cyber glassmorphism card style */
+.cyber-glass {
+  background: rgba(13, 20, 35, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.cyber-glass-glow {
+  background: rgba(13, 20, 35, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.15), 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+}
+
+.cyber-glass-red {
+  background: rgba(30, 10, 15, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.15), 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0E1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.4);
+}
+
+/* Glow effects */
+.glow-text-cyan {
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+}
+
+.glow-text-blue {
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+}
+
+.glow-text-red {
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5), 0 0 15px rgba(239, 68, 68, 0.2);
+}
+
+/* Scanning scanline animations */
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 182, 212, 0) 0%,
+    rgba(6, 182, 212, 0.1) 10%,
+    rgba(6, 182, 212, 0.2) 20%,
+    rgba(6, 182, 212, 0.2) 80%,
+    rgba(6, 182, 212, 0.1) 90%,
+    rgba(6, 182, 212, 0) 100%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+  animation: scan 6s linear infinite;
+}
+
+/* Heatmap marker wave */
+.pulse-wave {
+  position: absolute;
+  border-radius: 50%;
+  animation: wave 2s infinite ease-out;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Enterprise Light Theme Adaptations */
+.light {
+  color-scheme: light;
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+
+/* Background grid mesh subtle dark grid lines for light mode */
+.light > .absolute.inset-0 {
+  background-image: 
+    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px), 
+    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px) !important;
+}
+
+/* 1. Primary Card and Panel Surfaces */
+.light .cyber-glass {
+  background: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03) !important;
+  color: #0F172A !important;
+}
+
+.light .cyber-glass-glow {
+  background: #FFFFFF !important;
+  border-color: #06B6D4 !important;
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.15), 0 4px 20px 0 rgba(15, 23, 42, 0.06) !important;
+  color: #0F172A !important;
+}
+
+.light .cyber-glass-red {
+  background: #FEF2F2 !important;
+  border-color: #FCA5A5 !important;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.12), 0 4px 20px 0 rgba(15, 23, 42, 0.06) !important;
+  color: #991B1B !important;
+}
+
+/* 2. Secondary or Nested Card & Panel Surfaces */
+.light .bg-slate-950,
+.light .bg-slate-900,
+.light .bg-slate-900\/80,
+.light .bg-slate-900\/70,
+.light .bg-slate-900\/60,
+.light .bg-slate-900\/50,
+.light .bg-slate-900\/40,
+.light .bg-slate-950\/80,
+.light .bg-slate-950\/60,
+.light .bg-slate-950\/50,
+.light .bg-slate-950\/40,
+.light .bg-slate-950\/30 {
+  background-color: #F8FAFC !important;
+}
+
+/* Explicit nested panels inside cyber-glass */
+.light .cyber-glass .bg-slate-950,
+.light .cyber-glass .bg-slate-900,
+.light .cyber-glass [class*="bg-slate-950"],
+.light .cyber-glass [class*="bg-slate-900"] {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+/* Hover background */
+.light .hover\:bg-slate-900\/70:hover,
+.light .hover\:bg-slate-900\/60:hover,
+.light .hover\:bg-slate-900\/40:hover,
+.light .hover\:bg-slate-900:hover,
+.light .hover\:bg-slate-800:hover,
+.light aside nav a:hover,
+.light aside > div:last-child button:hover,
+.light table tr:hover td {
+  background-color: #F1F5F9 !important;
+}
+
+/* 3. Borders & Dividers */
+.light .border-slate-800,
+.light .border-slate-700,
+.light .border-cyber-border {
+  border-color: #CBD5E1 !important;
+}
+
+.light .border-slate-800\/80,
+.light .border-slate-800\/60,
+.light .border-slate-900,
+.light .border-slate-900\/40,
+.light .border-cyber-border\/40,
+.light .border-cyber-border\/20 {
+  border-color: #E2E8F0 !important;
+}
+
+/* 4. Text Contrast Overrides */
+/* Primary text: #0F172A */
+.light .text-white,
+.light .text-slate-100,
+.light .text-slate-200 {
+  color: #0F172A !important;
+}
+
+/* Secondary text: #334155 */
+.light .text-slate-300,
+.light .text-slate-400 {
+  color: #334155 !important;
+}
+
+/* Muted text: #64748B */
+.light .text-slate-500,
+.light .text-slate-600 {
+  color: #64748B !important;
+}
+
+/* Explicitly preserve crisp white text on solid colored buttons, badges, and avatars */
+.light [class*="bg-red-600"],
+.light [class*="bg-red-500"],
+.light [class*="bg-cyan-600"],
+.light [class*="bg-cyan-500"],
+.light [class*="bg-blue-600"],
+.light [class*="bg-blue-500"],
+.light [class*="bg-green-600"],
+.light [class*="bg-green-500"],
+.light [class*="bg-emerald-600"],
+.light [class*="bg-emerald-500"],
+.light [class*="bg-purple-600"],
+.light [class*="bg-purple-500"],
+.light [class*="bg-indigo-500"],
+.light [class*="bg-pink-600"],
+.light button[class*="bg-red-6"],
+.light button[class*="bg-cyan-6"],
+.light button[class*="bg-blue-6"],
+.light button[class*="bg-green-6"],
+.light .bg-red-600 *,
+.light .bg-red-500 *,
+.light .bg-cyan-600 *,
+.light .bg-cyan-500 *,
+.light .bg-blue-600 *,
+.light .bg-blue-500 *,
+.light .bg-green-600 *,
+.light .bg-green-500 *,
+.light .bg-emerald-600 *,
+.light .bg-emerald-500 *,
+.light .bg-purple-600 *,
+.light .bg-purple-500 *,
+.light .bg-indigo-500 *,
+.light .bg-pink-600 * {
+  color: #FFFFFF !important;
+}
+
+/* Glow texts: remove excessive dark glow and provide rich accessible color */
+.light .glow-text-cyan {
+  text-shadow: none !important;
+  color: #0891B2 !important;
+}
+
+.light .glow-text-blue {
+  text-shadow: none !important;
+  color: #2563EB !important;
+}
+
+.light .glow-text-red {
+  text-shadow: none !important;
+  color: #DC2626 !important;
+}
+
+/* 5. Sidebar Navigation */
+.light aside {
+  background-color: #FFFFFF !important;
+  border-right-color: #CBD5E1 !important;
+  box-shadow: 2px 0 12px rgba(15, 23, 42, 0.04) !important;
+}
+
+.light aside .border-cyber-border,
+.light aside .border-cyber-border\/40 {
+  border-color: #E2E8F0 !important;
+}
+
+.light aside nav a {
+  color: #334155 !important;
+}
+
+.light aside nav a:hover {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+
+.light aside nav a svg {
+  color: #64748B !important;
+}
+
+.light aside nav a:hover svg {
+  color: #0891B2 !important;
+}
+
+/* Active Nav Links in Sidebar */
+.light aside nav a.bg-cyan-950\/70,
+.light aside nav a.bg-cyan-950\/50,
+.light aside nav a[class*="bg-cyan-950"] {
+  background-color: #ECFEFF !important;
+  border-color: #06B6D4 !important;
+  color: #0E7490 !important;
+  box-shadow: 0 1px 4px rgba(6, 182, 212, 0.15) !important;
+}
+
+.light aside nav a.bg-cyan-950\/70 svg,
+.light aside nav a.bg-cyan-950\/50 svg,
+.light aside nav a[class*="bg-cyan-950"] svg {
+  color: #0891B2 !important;
+}
+
+/* Sidebar Stationary Bottom Container */
+.light aside > div:last-child {
+  background-color: #FFFFFF !important;
+  border-top-color: #E2E8F0 !important;
+}
+
+.light aside > div:last-child button {
+  color: #64748B !important;
+}
+
+.light aside > div:last-child button:hover {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+
+.light aside > div:last-child button.text-red-400\/90 {
+  color: #DC2626 !important;
+}
+
+.light aside > div:last-child button.text-red-400\/90:hover {
+  background-color: #FEF2F2 !important;
+  color: #B91C1C !important;
+}
+
+/* Brand text in sidebar */
+.light aside span.text-cyan-400 {
+  color: #0891B2 !important;
+}
+
+.light aside span.text-slate-400 {
+  color: #64748B !important;
+}
+
+/* Tooltips in collapsed sidebar */
+.light aside .absolute.left-full.bg-slate-950 {
+  background-color: #0F172A !important;
+  color: #F8FAFC !important;
+  border-color: #334155 !important;
+}
+
+/* 6. Topbar Header */
+.light header {
+  background-color: rgba(255, 255, 255, 0.97) !important;
+  border-bottom-color: #CBD5E1 !important;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03) !important;
+}
+
+.light header .bg-slate-900\/60,
+.light header .bg-slate-900\/50,
+.light header .bg-slate-900\/40 {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+.light header a.bg-cyan-950\/60 {
+  background-color: #ECFEFF !important;
+  border-color: #A5F3FC !important;
+  color: #0E7490 !important;
+}
+
+.light header a.bg-cyan-950\/60:hover {
+  background-color: #CFFAFE !important;
+}
+
+.light header .text-cyan-300,
+.light header .text-cyan-400 {
+  color: #0891B2 !important;
+}
+
+/* Topbar Emergency Status Banner */
+.light header a[class*="bg-red-950"],
+.light header a.bg-red-950\/80 {
+  background-color: #FEF2F2 !important;
+  border-color: #F87171 !important;
+  color: #991B1B !important;
+}
+
+.light header a[class*="bg-red-950"] span,
+.light header a.bg-red-950\/80 span {
+  color: #991B1B !important;
+  font-weight: 700 !important;
+}
+
+.light header a[class*="bg-red-950"] svg,
+.light header a.bg-red-950\/80 svg {
+  color: #DC2626 !important;
+}
+
+/* Topbar Notification Dropdown */
+.light header .w-80.bg-slate-950 {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Topbar Account / Profile Dropdown Menu */
+.light header .bg-\[\#090D1A\],
+.light header div[class*="bg-[#090D1A]"] {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Account Dropdown Separators */
+.light header .bg-\[\#090D1A\] > div + div,
+.light header div[class*="bg-[#090D1A]"] > div + div,
+.light header .bg-\[\#090D1A\].divide-y > :not([hidden]) ~ :not([hidden]),
+.light header div[class*="bg-[#090D1A]"].divide-y > :not([hidden]) ~ :not([hidden]) {
+  border-color: #E2E8F0 !important;
+}
+
+/* Account Dropdown User Header */
+.light header div[class*="bg-[#090D1A]"] p.text-white {
+  color: #0F172A !important;
+}
+
+.light header div[class*="bg-[#090D1A]"] p.text-slate-400 {
+  color: #475569 !important;
+}
+
+.light header div[class*="bg-[#090D1A]"] span.bg-cyan-950 {
+  background-color: #ECFEFF !important;
+  border-color: #06B6D4 !important;
+  color: #0E7490 !important;
+}
+
+/* Account Dropdown Navigation Items */
+.light header div[class*="bg-[#090D1A]"] button.text-slate-300 {
+  color: #334155 !important;
+}
+
+.light header div[class*="bg-[#090D1A]"] button.text-slate-300 svg {
+  color: #0891B2 !important;
+}
+
+.light header div[class*="bg-[#090D1A]"] button.text-slate-300:hover {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+
+.light header div[class*="bg-[#090D1A]"] button.text-slate-300:hover svg {
+  color: #0891B2 !important;
+}
+
+/* Account Dropdown Logout Item */
+.light header div[class*="bg-[#090D1A]"] button.text-red-400 {
+  color: #DC2626 !important;
+}
+
+.light header div[class*="bg-[#090D1A]"] button.text-red-400 svg {
+  color: #DC2626 !important;
+}
+
+.light header div[class*="bg-[#090D1A]"] button.text-red-400:hover {
+  background-color: #FEF2F2 !important;
+  color: #B91C1C !important;
+}
+
+.light header div[class*="bg-[#090D1A]"] button.text-red-400:hover svg {
+  color: #B91C1C !important;
+}
+
+/* Operator avatar button */
+.light header button .bg-cyan-950 {
+  background-color: #E0F2FE !important;
+  border-color: #38BDF8 !important;
+  color: #0369A1 !important;
+}
+
+/* 7. Form Controls, Inputs & Selects */
+.light input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+.light select,
+.light textarea {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+.light select option {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+.light input:focus,
+.light select:focus,
+.light textarea:focus {
+  border-color: #06B6D4 !important;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15) !important;
+}
+
+.light input::placeholder,
+.light textarea::placeholder {
+  color: #64748B !important;
+}
+
+/* 8. Alert Panels, Severity Cards & Badges */
+/* Critical (Red) */
+.light .bg-red-950,
+.light .bg-red-950\/80,
+.light .bg-red-950\/60,
+.light .bg-red-950\/50,
+.light .bg-red-950\/40,
+.light .bg-red-950\/30,
+.light .bg-red-950\/20,
+.light .bg-red-950\/10 {
+  background-color: #FEF2F2 !important;
+  border-color: #FCA5A5 !important;
+}
+
+.light .bg-red-950,
+.light [class*="bg-red-950"] {
+  color: #991B1B !important;
+}
+
+.light .bg-red-950 .text-red-200,
+.light [class*="bg-red-950"] .text-red-200,
+.light [class*="bg-red-950"].text-red-200,
+.light .bg-red-950 .text-red-300,
+.light [class*="bg-red-950"] .text-red-300,
+.light [class*="bg-red-950"].text-red-300 {
+  color: #991B1B !important;
+}
+
+.light [class*="bg-red-950"] .text-red-400,
+.light [class*="bg-red-950"].text-red-400 {
+  color: #DC2626 !important;
+}
+
+/* Warning (Amber / Yellow) */
+.light .bg-amber-950,
+.light .bg-amber-950\/70,
+.light .bg-amber-950\/60,
+.light .bg-amber-950\/50,
+.light .bg-amber-950\/40,
+.light .bg-amber-950\/20,
+.light .bg-yellow-950,
+.light .bg-yellow-950\/70,
+.light .bg-yellow-950\/60,
+.light .bg-yellow-950\/50,
+.light .bg-yellow-950\/40 {
+  background-color: #FFFBEB !important;
+  border-color: #FCD34D !important;
+}
+
+.light .bg-amber-950,
+.light [class*="bg-amber-950"],
+.light .bg-yellow-950,
+.light [class*="bg-yellow-950"] {
+  color: #92400E !important;
+}
+
+.light [class*="bg-amber-950"] .text-amber-200,
+.light [class*="bg-yellow-950"] .text-yellow-200,
+.light [class*="bg-amber-950"] .text-amber-300,
+.light [class*="bg-yellow-950"] .text-yellow-300,
+.light [class*="bg-amber-950"].text-amber-300,
+.light [class*="bg-yellow-950"].text-yellow-300 {
+  color: #92400E !important;
+}
+
+.light [class*="bg-amber-950"] .text-amber-400,
+.light [class*="bg-yellow-950"] .text-yellow-400 {
+  color: #D97706 !important;
+}
+
+/* Informational (Cyan / Blue) */
+.light .bg-cyan-950,
+.light .bg-cyan-950\/80,
+.light .bg-cyan-950\/70,
+.light .bg-cyan-950\/60,
+.light .bg-cyan-950\/50,
+.light .bg-cyan-950\/40,
+.light .bg-cyan-950\/30,
+.light .bg-cyan-950\/20,
+.light .bg-blue-950,
+.light .bg-blue-950\/60,
+.light .bg-blue-950\/40,
+.light .bg-blue-950\/30,
+.light .bg-blue-950\/20 {
+  background-color: #F0F9FF !important;
+  border-color: #BAE6FD !important;
+}
+
+.light [class*="bg-cyan-950"] .text-cyan-300,
+.light [class*="bg-cyan-950"].text-cyan-300,
+.light [class*="bg-blue-950"] .text-blue-300,
+.light [class*="bg-blue-950"].text-blue-300 {
+  color: #0369A1 !important;
+}
+
+.light [class*="bg-cyan-950"] .text-cyan-400,
+.light [class*="bg-blue-950"] .text-blue-400 {
+  color: #0284C7 !important;
+}
+
+/* Success (Green / Emerald) */
+.light .bg-green-950,
+.light .bg-green-950\/60,
+.light .bg-green-950\/40,
+.light .bg-green-950\/20,
+.light .bg-emerald-950,
+.light .bg-emerald-950\/40 {
+  background-color: #F0FDF4 !important;
+  border-color: #BBF7D0 !important;
+}
+
+.light [class*="bg-green-950"] .text-green-300,
+.light [class*="bg-emerald-950"] .text-emerald-300,
+.light [class*="bg-green-950"].text-green-300 {
+  color: #166534 !important;
+}
+
+.light [class*="bg-green-950"] .text-green-400,
+.light [class*="bg-emerald-950"] .text-emerald-400 {
+  color: #15803D !important;
+}
+
+/* Purple / Indigo */
+.light .bg-purple-950,
+.light .bg-purple-950\/70,
+.light .bg-purple-950\/60,
+.light .bg-purple-950\/40,
+.light .bg-purple-950\/30 {
+  background-color: #FAF5FF !important;
+  border-color: #E9D5FF !important;
+}
+
+.light [class*="bg-purple-950"] .text-purple-300,
+.light [class*="bg-purple-950"].text-purple-300 {
+  color: #6B21A8 !important;
+}
+
+.light [class*="bg-purple-950"] .text-purple-400 {
+  color: #7E22CE !important;
+}
+
+/* 9. Stat Cards */
+.light .cyber-glass .text-2xl.text-white,
+.light .cyber-glass .text-3xl.text-white,
+.light .cyber-glass .text-4xl.text-white,
+.light .cyber-glass .text-2xl,
+.light .cyber-glass .text-3xl,
+.light .cyber-glass .text-4xl {
+  color: #0F172A !important;
+}
+
+/* StatCard Icon Containers */
+.light .bg-cyan-950\/30 {
+  background-color: #ECFEFF !important;
+  border-color: #A5F3FC !important;
+  color: #0891B2 !important;
+}
+
+.light .bg-blue-950\/30 {
+  background-color: #EFF6FF !important;
+  border-color: #BFDBFE !important;
+  color: #2563EB !important;
+}
+
+.light .bg-purple-950\/30 {
+  background-color: #FAF5FF !important;
+  border-color: #E9D5FF !important;
+  color: #7C3AED !important;
+}
+
+.light .bg-red-950\/30 {
+  background-color: #FEF2F2 !important;
+  border-color: #FECACA !important;
+  color: #DC2626 !important;
+}
+
+.light .bg-green-950\/30 {
+  background-color: #F0FDF4 !important;
+  border-color: #BBF7D0 !important;
+  color: #16A34A !important;
+}
+
+.light .bg-orange-950\/30 {
+  background-color: #FFFBEB !important;
+  border-color: #FDE68A !important;
+  color: #D97706 !important;
+}
+
+/* 10. Settings Page Navigation Tabs */
+.light button.bg-cyan-950\/70,
+.light button.bg-cyan-950\/60,
+.light button[class*="bg-cyan-950"] {
+  background-color: #ECFEFF !important;
+  border-color: #06B6D4 !important;
+}
+
+.light button[class*="bg-cyan-950"] span.text-white {
+  color: #0E7490 !important;
+  font-weight: 700 !important;
+}
+
+.light button[class*="bg-cyan-950"] span.text-slate-500 {
+  color: #0891B2 !important;
+}
+
+.light button[class*="bg-cyan-950"] svg {
+  color: #0891B2 !important;
+}
+
+/* Inactive Settings Tabs */
+.light button:not([class*="bg-cyan-950"]) span.text-white {
+  color: #0F172A !important;
+}
+
+.light button:not([class*="bg-cyan-950"]) span.text-slate-500 {
+  color: #64748B !important;
+}
+
+/* 11. Heatmap Page Controls & Profiles */
+.light .text-cyan-300 {
+  color: #0E7490 !important;
+}
+
+.light .text-yellow-300 {
+  color: #B45309 !important;
+}
+
+.light .text-orange-300 {
+  color: #C2410C !important;
+}
+
+.light .text-red-300 {
+  color: #B91C1C !important;
+}
+
+/* Profile Cards (Secondary nested cards: #F8FAFC, border #CBD5E1) */
+.light div[class*="bg-slate-950\/50"] {
+  background-color: #F8FAFC !important;
+  border-color: #CBD5E1 !important;
+}
+
+/* Heatmap Toolbar Controls */
+.light button[class*="bg-amber-950\/70"] {
+  background-color: #FEF3C7 !important;
+  border-color: #F59E0B !important;
+  color: #B45309 !important;
+}
+
+.light button[class*="bg-cyan-950\/70"] {
+  background-color: #ECFEFF !important;
+  border-color: #06B6D4 !important;
+  color: #0E7490 !important;
+}
+
+.light button[class*="bg-purple-950\/70"] {
+  background-color: #FAF5FF !important;
+  border-color: #A855F7 !important;
+  color: #7E22CE !important;
+}
+
+/* 12. Tables & Lists */
+.light table th {
+  background-color: #F8FAFC !important;
+  color: #334155 !important;
+  border-color: #E2E8F0 !important;
+}
+
+.light table td {
+  border-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+.light table tr:hover td {
+  background-color: #F1F5F9 !important;
+}
+
+/* 13. Recharts Elements */
+.light .recharts-default-tooltip {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+}
+
+.light .recharts-cartesian-grid-horizontal line,
+.light .recharts-cartesian-grid-vertical line {
+  stroke: #E2E8F0 !important;
+}
+
+.light .recharts-text {
+  fill: #64748B !important;
+}
+
+/* 14. Modals & Dialog Backdrops */
+.light .fixed.inset-0.bg-black\/70,
+.light .fixed.inset-0.bg-slate-950\/80 {
+  background-color: rgba(15, 23, 42, 0.6) !important;
+}
+
+/* 15. STRICTLY PROTECTED ELEMENTS */
+/* Never invert or alter floorplans, heatmap overlays, video feeds, canvases, or map pin markers */
+.light video,
+.light canvas,
+.light img[alt*="Blueprint"],
+.light img[alt*="Venue"],
+.light img[alt*="Overlay"],
+.light img[alt*="Heatmap"],
+.light .group\/pin,
+.light .group\/pin *,
+.light [data-unthemed="true"] {
+  filter: none !important;
+}
+
+/* Accessibility: High Contrast */
+.high-contrast {
+  filter: contrast(1.2);
+}
+
+/* Accessibility: Font Scaling */
+.font-scale-sm {
+  font-size: 0.92rem;
+}
+
+.font-scale-lg {
+  font-size: 1.08rem;
+}
+
+/* Accessibility: Reduced Motion */
+.reduced-motion * {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}

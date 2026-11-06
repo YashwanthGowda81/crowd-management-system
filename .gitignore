@@ -1,0 +1,78 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Python virtual environments and caches
+.venv/
+venv/
+backend/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Local databases and backups
+*.db
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+*.bak
+
+# Generated build files
+dist/
+dist-ssr/
+coverage/
+
+# Archived duplicate files
+cleanup_archive/
+
+# Duplicate root model and unused exported model
+/yolov8n.pt
+backend/yolov8n.torchscript
+
+# Generated detection images
+backend/app/uploads/test_detections/
+
+# Unused TorchScript export
+backend/yolov8n.torchscript
+
+# Python and frontend build output
+__pycache__/
+.pytest_cache/
+coverage/
+# Uploaded camera videos
+backend/app/uploads/videos/
+
+
+# Generated venue maps
+backend/uploads/maps/
+
